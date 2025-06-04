@@ -22,6 +22,7 @@
     height: 100%;
     object-fit: cover;
     background: black;
+    pointer-events: none; /* Видео не блокирует клики пока кнопка видна */
   }
   #playButton {
     position: absolute;
@@ -35,7 +36,7 @@
     cursor: pointer;
     border-radius: 10px;
     transition: opacity 0.3s ease;
-    user-select: none;
+    z-index: 10;
   }
   #playButton.hidden {
     opacity: 0;
@@ -46,7 +47,7 @@
 <body>
 
 <div id="videoContainer">
-  <video id="mainVideo" muted preload="auto" playsinline></video>
+  <video id="mainVideo" muted></video>
   <button id="playButton">▶</button>
 </div>
 
@@ -54,18 +55,17 @@
   const video = document.getElementById('mainVideo');
   const playBtn = document.getElementById('playButton');
 
-  // Предзагружаем видео сразу (но не проигрываем)
-  video.src = 'your-video.mp4';
-  video.load();
-
   playBtn.addEventListener('click', () => {
+    video.src = `your-video.mp4?cacheBust=${Date.now()}`;
+    video.load();
     video.play();
     playBtn.classList.add('hidden');
+    video.style.pointerEvents = 'auto'; // Включаем клики на видео, когда оно играет
   });
 
-  // Показать кнопку, когда видео закончится (опционально)
   video.addEventListener('ended', () => {
     playBtn.classList.remove('hidden');
+    video.style.pointerEvents = 'none'; // Отключаем клики, чтобы кнопка была доступна
   });
 </script>
 
