@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>you found this</title>
   <style>
     body {
@@ -53,10 +53,20 @@ she’s already gone.</div>
   </div>
 
   <div id="videoContainer">
- video.src = 'your-video.mp4?cacheBust=' + new Date().getTime();
+ <video id="mainVideo" src="your-video.mp4" autoplay muted controls></video>
   </div>
 
   <script>
     const playBtn = document.getElementById('playButton');
     const intro = document.getElementById('intro');
-    const videoContainer = document.getElem
+    const videoContainer = document.getElementById('videoContainer');
+    const video = document.getElementById('mainVideo');
+
+    playBtn.addEventListener('click', () => {
+      intro.style.display = 'none';
+      videoContainer.style.display = 'block';
+      video.play();
+    });
+  </script>
+</body>
+</html>
