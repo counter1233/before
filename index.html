@@ -54,12 +54,17 @@ she’s already gone.</div>
 
 <div id="videoContainer">
   <video id="mainVideo" autoplay muted controls></video>
+  <button id="playBtn">Play</button>
 
   <script>
     const video = document.getElementById('mainVideo');
+    const playBtn = document.getElementById('playBtn');
     video.src = 'your-video.mp4?cacheBust=' + new Date().getTime();
     video.load();
-    // video.play(); // закомментировано, чтобы не мешать кликам на controls
+
+    playBtn.addEventListener('click', () => {
+      video.play();
+    });
   </script>
 </div>
 
