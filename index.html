@@ -59,7 +59,7 @@ she’s already gone.</div>
     const video = document.getElementById('mainVideo');
     video.src = 'your-video.mp4?cacheBust=' + new Date().getTime();
     video.load();
-    video.play();
+    // video.play(); // закомментировано, чтобы не мешать кликам на controls
   </script>
 </div>
 
