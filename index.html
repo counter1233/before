@@ -52,9 +52,16 @@ she’s already gone.</div>
     <button id="playButton">▸ play</button>
   </div>
 
-  <div id="videoContainer">
-    <video id="mainVideo" src="your-video.mp4" autoplay muted controls></video>
-  </div>
+<div id="videoContainer">
+  <video id="mainVideo" autoplay muted controls></video>
+
+  <script>
+    const video = document.getElementById('mainVideo');
+    video.src = 'your-video.mp4?cacheBust=' + new Date().getTime();
+    video.load();
+    video.play();
+  </script>
+</div>
 
   <script>
     const playBtn = document.getElementById('playButton');
