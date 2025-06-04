@@ -52,9 +52,13 @@ she’s already gone.</div>
     <button id="playButton">▸ play</button>
   </div>
 
-  <div id="videoContainer">
-    <video id="mainVideo" src="your-video.mp4" autoplay muted controls></video>
-  </div>
+<div id="videoContainer">
+  <video id="mainVideo" autoplay muted controls>
+    <source src="video.webm" type="video/webm">
+    <source src="your-video.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
+</div>
 
   <script>
     const playBtn = document.getElementById('playButton');
